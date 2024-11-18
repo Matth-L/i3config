@@ -1,0 +1,184 @@
+# Mod keys
+set $super Mod4
+set $alt Mod1
+
+# Terminal
+bindsym $super+Return exec alacritty
+
+# Monitor
+set $monitor_left "DP-1"
+set $monitor_primary "eDP-1"
+
+focus_follows_mouse yes
+
+# fonts
+font pango:Ionicons 8, "Roboto Mono" 8
+
+# Use mouse+$super for dragging floating windows
+floating_modifier $super
+
+# Dmenu launcher 
+bindsym $alt+d exec i3-dmenu-desktop --dmenu="dmenu -i -b \
+-fn 'Roboto Mono:size=9' -nb '#1c1c1c' -nf '#c0c0c0' \
+-sb '#3c3c3c' -sf '#1c1c1c'"
+
+# Kill window
+bindsym $super+Shift+q kill
+bindsym $alt+F4 kill
+
+# focus window
+bindsym $alt+h focus left
+bindsym $alt+j focus down
+bindsym $alt+k focus up
+bindsym $alt+l focus right
+
+# Move focused window
+bindsym $super+Shift+h move left
+bindsym $super+Shift+j move down
+bindsym $super+Shift+k move up
+bindsym $super+Shift+l move right
+
+# Split windows and toggle modes with intuitive keys
+bindsym $super+b split h
+bindsym $super+n split v
+bindsym $super+s layout toggle split
+bindsym $super+space floating toggle
+bindsym $super+Shift+space focus mode_toggle
+
+# Fullscreen mode and workspace navigation
+bindsym $super+f fullscreen toggle
+bindsym $super+Tab workspace next
+bindsym $super+Shift+Tab workspace prev
+
+# Assign workspace to monitor
+workspace 1:α output $monitor_primary
+workspace 2:β output $monitor_primary
+workspace 3:γ output $monitor_primary
+workspace 4:δ output $monitor_primary
+
+workspace 5:I output $monitor_left
+workspace 6:II output $monitor_left
+workspace 7:III output $monitor_left
+workspace 8:IV output $monitor_left
+
+# left screen
+bindsym $alt+u workspace 1:α
+bindsym $alt+i workspace 2:β
+bindsym $alt+o workspace 3:γ
+bindsym $alt+p workspace 4:δ
+
+# right screen (main screen)
+bindsym $alt+a workspace 5:I
+bindsym $alt+z workspace 6:II
+bindsym $alt+e workspace 7:III
+bindsym $alt+r workspace 8:IV
+
+# Move windows to workspaces with a modern touch
+bindsym $super+Shift+1 move container to workspace 1:α
+bindsym $super+Shift+2 move container to workspace 2:β
+bindsym $super+Shift+3 move container to workspace 3:γ
+bindsym $super+Shift+4 move container to workspace 4:δ
+bindsym $super+Shift+5 move container to workspace 5:ε
+bindsym $super+Shift+6 move container to workspace 6:ζ
+
+# Restart and exit i3
+bindsym $super+BackSpace exec "i3-msg restart"
+bindsym $super+q exec "i3-nagbar -t warning -m 'Really exit?' -b 'Yes' 'i3-msg exit'"
+
+# Resize mode for fluid window management
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    bindsym Return mode "default"
+}
+bindsym $super+r mode "resize"
+
+# Enhanced client colors for a modern look
+client.focused #3c3c3c #1c1c1c #c0c0c0 #3c3c3c #1c1c1c
+client.focused_inactive #1c1c1c #3c3c3c #c0c0c0 #1c1c1c #1c1c1c
+client.unfocused #1c1c1c #3c3c3c #c0c0c0 #1c1c1c #1c1c1c
+client.urgent #ff0000 #1c1c1c #c0c0c0 #1c1c1c #1c1c1c
+client.placeholder #1c1c1c #1c1c1c #c0c0c0 #1c1c1c #1c1c1c
+client.background #1c1c1c
+
+# Floating and focused window rules for seamless experience
+for_window [class=Eog|Sxiv|feh|mpv|Vlc|FiSle-roller|Xarchiver] floating enable
+for_window [class=Eog|Sxiv|feh|mpv|Vlc|File-roller|Xarchiver] focus
+for_window [class=".*"] border pixel 4
+hide_edge_borders smart
+gaps inner 5
+smart_gaps on
+
+bar {
+    status_command i3status
+    position top
+    workspace_min_width 40
+    padding 4px 8px 4px 8px
+    strip_workspace_numbers yes
+    font pango:Roboto Mono, 9
+    height 24
+    tray_padding 4
+
+    colors {
+        background #2e2e2e
+        statusline #ffffff
+        separator #4c4c4c
+
+        focused_workspace #ffffff #3e3e3e #f0a500
+        active_workspace #dcdcdc #3e3e3e #f0a500
+        inactive_workspace #dcdcdc #2e2e2e #7d7d7d
+        urgent_workspace #ff3333 #2e2e2e #ffffff
+    }
+}
+
+
+# Screenshot
+bindsym Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+
+# Wallpaper
+exec --no-startup-id feh --bg-scale ~/Pictures/ninja_synthwave.jpg
+
+# Screen setup
+exec --no-startup-id xrandr --output DP-1 --mode 1920x1080 --pos 0x0 --output eDP-1 --primary --mode 1920x1200 --pos 1920x0
+
+
+
+
+# lock screen + chrome + vscode
+bindsym $super+l exec i3lock -i ~/.lock.png
+bindsym $alt+w exec google-chrome
+bindsym $alt+c exec code
+
+
+
+## Volume control
+
+# Path to volume control, without trailing slash
+set $volumepath ~/i3-volume
+
+# Command for the status line
+#   ie: i3blocks, i3status
+set $statuscmd i3status
+
+# Signal used to update the status line
+#   i3blocks uses SIGRTMIN+10 by default
+#   i3status uses SIGUSR1 by default
+set $statussig SIGUSR1
+
+# Amount to increase/decrease volume as a percentage
+set $volumestep 5
+
+# pulseaudio-utils settings
+#
+# Symbolic name for sink (numeric index not supported)
+#   Recommended: comment out this setting and omit the -s option to use default sink
+#   List sink names: pacmd list-sinks | awk -F "[<>]" '/^\s+name: <.*>/{print $2}'
+#set $sinkname alsa_output.pci-0000_00_1b.0.analog-stereo
+
+# Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
+bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig up $volumestep
+bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
+bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
