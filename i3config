@@ -12,7 +12,7 @@ set $monitor_primary "eDP-1"
 focus_follows_mouse yes
 
 # fonts
-font pango:Ionicons 8, "Roboto Mono" 8
+font pango:Ionicons, Fira Code 8
 
 # Use mouse+$super for dragging floating windows
 floating_modifier $super
@@ -73,13 +73,16 @@ bindsym $alt+z workspace 6:II
 bindsym $alt+e workspace 7:III
 bindsym $alt+r workspace 8:IV
 
-# Move windows to workspaces with a modern touch
-bindsym $super+Shift+1 move container to workspace 1:α
-bindsym $super+Shift+2 move container to workspace 2:β
-bindsym $super+Shift+3 move container to workspace 3:γ
-bindsym $super+Shift+4 move container to workspace 4:δ
-bindsym $super+Shift+5 move container to workspace 5:ε
-bindsym $super+Shift+6 move container to workspace 6:ζ
+# Move windows to workspaces
+bindsym $alt+Shift+u move container to workspace 1:α
+bindsym $alt+Shift+i move container to workspace 2:β
+bindsym $alt+Shift+o move container to workspace 3:γ
+bindsym $alt+Shift+p move container to workspace 4:δ
+
+bindsym $alt+Shift+a move container to workspace 5:I
+bindsym $alt+Shift+z move container to workspace 6:II
+bindsym $alt+Shift+e move container to workspace 7:III
+bindsym $alt+Shift+r move container to workspace 8:IV
 
 # Restart and exit i3
 bindsym $super+BackSpace exec "i3-msg restart"
@@ -137,13 +140,14 @@ bar {
 # Screenshot
 bindsym Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
-
 # Wallpaper
 exec --no-startup-id feh --bg-scale ~/Pictures/ninja_synthwave.jpg
 
-# Screen setup
-exec --no-startup-id xrandr --output DP-1 --mode 1920x1080 --pos 0x0 --output eDP-1 --primary --mode 1920x1200 --pos 1920x0
+##  Screen setup
+exec --no-startup-id xrandr --output DP-1 --mode 1920x1080 --rate 60 --pos 0x0 --output eDP-1 --primary --mode 1920x1200 --rate 60 --pos 1920x0
 
+## Screen animation with picom
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
 
 
@@ -151,7 +155,6 @@ exec --no-startup-id xrandr --output DP-1 --mode 1920x1080 --pos 0x0 --output eD
 bindsym $super+l exec i3lock -i ~/.lock.png
 bindsym $alt+w exec google-chrome
 bindsym $alt+c exec code
-
 
 
 ## Volume control
@@ -169,7 +172,7 @@ set $statuscmd i3status
 set $statussig SIGUSR1
 
 # Amount to increase/decrease volume as a percentage
-set $volumestep 5
+set $volumestep 2.5
 
 # pulseaudio-utils settings
 #
