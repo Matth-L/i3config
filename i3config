@@ -1,4 +1,4 @@
-# Mod keys
+#Mod keys
 set $super Mod4
 set $alt Mod1
 
@@ -150,11 +150,15 @@ exec --no-startup-id xrandr --output DP-1 --mode 1920x1080 --rate 60 --pos 0x0 -
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
 
-
 # lock screen + chrome + vscode
 bindsym $super+l exec i3lock -i ~/.lock.png
 bindsym $alt+w exec google-chrome
 bindsym $alt+c exec code
+
+
+## Brightness control
+bindsym XF86MonBrightnessUp exec --no-startup-id xrandr --output eDP-1 --brightness 1.05
+bindsym XF86MonBrightnessDown exec --no-startup-id xrandr --output eDP-1 --brightness 0.95
 
 
 ## Volume control
