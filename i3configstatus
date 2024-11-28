@@ -21,8 +21,6 @@ load {
 
 memory {
     format = "<span background='#006400'>    </span><span background='#555555'>  RAM: %used / %total</span>"
-	threshold_degraded = "10%"
-	format_degraded = "MEMORY: %free"
 }
 
 cpu_temperature 0 {
@@ -70,3 +68,4 @@ battery 0 {
 time {
     format = "<span background='#008080'>    </span><span background='#555555'>  %b %d at %H:%M  </span>"
 }
+
