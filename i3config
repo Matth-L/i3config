@@ -18,7 +18,7 @@ font pango:Fira Code Regular 8
 floating_modifier $super
 
 # Dmenu launcher 
-bindsym $alt+d exec i3-dmenu-desktop --dmenu="dmenu -i -b \
+bindsym $alt+f exec i3-dmenu-desktop --dmenu="dmenu -i -b \
 -fn 'Roboto Mono:size=9' -nb '#1c1c1c' -nf '#c0c0c0' \
 -sb '#3c3c3c' -sf '#1c1c1c'"
 
