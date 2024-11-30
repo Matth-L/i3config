@@ -3,7 +3,7 @@ set $super Mod4
 set $alt Mod1
 
 # Terminal
-bindsym $alt+Return exec alacritty
+bindsym $alt+Return exec kitty
 
 # Monitor
 set $monitor_left "DP-1"
@@ -12,7 +12,7 @@ set $monitor_primary "eDP-1"
 focus_follows_mouse yes
 
 # fonts
-font pango:Ionicons, Fira Code 8
+font pango:Fira Code Regular 8
 
 # Use mouse+$super for dragging floating windows
 floating_modifier $super
@@ -21,6 +21,10 @@ floating_modifier $super
 bindsym $alt+d exec i3-dmenu-desktop --dmenu="dmenu -i -b \
 -fn 'Roboto Mono:size=9' -nb '#1c1c1c' -nf '#c0c0c0' \
 -sb '#3c3c3c' -sf '#1c1c1c'"
+
+# Logout
+bindsym $super+m exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
 
 # Kill window
 bindsym $alt+q kill
@@ -120,7 +124,7 @@ bar {
     workspace_min_width 40
     padding 4px 8px 4px 8px
     strip_workspace_numbers yes
-    font pango:Roboto Mono, 9
+    font pango:Fira Code 10
     height 24
     tray_padding 4
 
@@ -137,12 +141,13 @@ bar {
 }
 
 
-# Screenshot
-bindsym Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
-
 # Wallpaper
 exec --no-startup-id feh --bg-scale ~/Pictures/ninja_synthwave.jpg
 
+# Screenshot
+bindsym Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+bindsym $alt+s exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 ##  Screen setup
 exec --no-startup-id xrandr --output DP-1 --mode 1920x1080 --rate 60 --pos 0x0 --output eDP-1 --primary --mode 1920x1200 --rate 60 --pos 1920x0
 

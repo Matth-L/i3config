@@ -13,59 +13,43 @@ order += "volume master"
 order += "battery 0"
 order += "time"
 
-
 load {
-    format = "<span background='#006400'>    </span><span background='#555555'>  %5min Load  </span>"
+    format = "<span color='#006400'></span> %5min"
 }
 
-
 memory {
-    format = "<span background='#006400'>    </span><span background='#555555'>  RAM: %used / %total</span>"
+    format = "<span color='#006400'>󰍛</span> %used/%total"
 }
 
 cpu_temperature 0 {
-    format = "<span background='#f28a00'>    </span><span background='#555555'>  %degrees °C  </span>"
+    format = "<span color='#f28a00'></span> %degrees°C"
     path = "/sys/class/thermal/thermal_zone0/temp"
 }
 
 battery 0 {
-        format = " %status %percentage %remaining %emptytime"
-        format_down = "No battery"
-        status_chr = "⚡ CHR"
-        status_bat = "🔋 BAT"
-        status_unk = "? UNK"
-        status_full = "☻ FULL"
-        path = "/sys/class/power_supply/BAT%d/uevent"
-        low_threshold = 10
+    format = "<span color='#ffff00'>%status</span> %percentage"
+    format_down = "No battery"
+    status_chr = "⚡"
+    status_bat = "🔋"
+    status_unk = "?"
+    status_full = "☻"
+    low_threshold = 10
+    integer_battery_capacity = true
 }
 
 wireless wlp0s20f3 {
-    format_up = "<span background='#00aaff'>   </span><span background='#555555'> %essid </span>"
-    format_down = "<span background='#00aaff'>   </span><span background='#555555'> Disconnected </span>"
+    format_up = "<span color='#00aaff'></span> %essid"
+    format_down = "<span color='#00aaff'></span> Disconnected"
 }
 
 volume master {
-    format = "<span background='#6666ff'>    </span><span background='#555555'>  %volume  </span>"
-    format_muted = "<span background='#6666ff'>    </span><span background='#555555'>  Muted  </span>"
+    format = "<span color='#6666ff'></span> %volume"
+    format_muted = "<span color='#6666ff'></span> Muted"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
 }
 
-battery 0 {
-    last_full_capacity = true
-    format = "<span background='#666600'>  %status  </span><span background='#555555'>  %percentage  </span>"
-    format_down = "<span background='#666600'>    </span><span background='#555555'>  No Battery  </span>"
-    status_chr = ""
-    status_bat = ""
-    status_unk = ""
-    status_full = ""
-    path = "/sys/class/power_supply/BAT%d/uevent"
-    low_threshold = 10
-    integer_battery_capacity = true
-}
-
 time {
-    format = "<span background='#008080'>    </span><span background='#555555'>  %b %d at %H:%M  </span>"
+    format = "<span color='#008080'></span> %b %d %H:%M"
 }
-
