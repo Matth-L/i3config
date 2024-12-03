@@ -7,7 +7,6 @@ general {
 
 order += "load"
 order += "memory"
-order += "cpu_temperature 0"
 order += "wireless wlp0s20f3"
 order += "volume master"
 order += "battery 0"
@@ -19,11 +18,6 @@ load {
 
 memory {
     format = "<span color='#006400'>󰍛</span> %used/%total"
-}
-
-cpu_temperature 0 {
-    format = "<span color='#f28a00'></span> %degrees°C"
-    path = "/sys/class/thermal/thermal_zone0/temp"
 }
 
 battery 0 {
