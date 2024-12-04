@@ -145,7 +145,10 @@ bar {
 exec --no-startup-id feh --bg-scale ~/Pictures/ninja_synthwave.jpg
 
 # Screenshot
-bindsym Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym $super+o exec --no-startup-id sh -c "maim --select | tee ~/Pictures/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png | xclip -selection clipboard -t image/png"
+bindsym $super+p exec --no-startup-id sh -c "maim | tee ~/Pictures/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png | xclip -selection clipboard -t image/png"
+
+
 
 bindsym $alt+s exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 ##  Screen setup
