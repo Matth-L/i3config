@@ -1,58 +1,58 @@
-#Mod keys
+# Mod keys
 set $super Mod4
 set $alt Mod1
 
 # Terminal
-bindsym $alt+Return exec cool-retro-term
+bindsym --release $alt+Return exec gnome-terminal
 
 # Monitor
 set $monitor_left "DP-1"
 set $monitor_primary "eDP-1"
 
 focus_follows_mouse yes
+force_focus_wrapping yes
 
-# fonts
+# Fonts
 font pango:Fira Code Regular 8
 
 # Use mouse+$super for dragging floating windows
 floating_modifier $super
 
-# Dmenu launcher 
-bindsym $alt+f exec i3-dmenu-desktop --dmenu="dmenu -i -b \
+# Dmenu launcher
+bindsym --release $alt+f exec i3-dmenu-desktop --dmenu="dmenu -i -b \
 -fn 'Roboto Mono:size=9' -nb '#1c1c1c' -nf '#c0c0c0' \
 -sb '#3c3c3c' -sf '#1c1c1c'"
 
 # Logout
 bindsym $super+m exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-
 # Kill window
-bindsym $alt+q kill
-bindsym $alt+F4 kill
+bindsym --release $alt+q kill
+bindsym --release $alt+F4 kill
 
-# focus window
-bindsym $alt+h focus left
-bindsym $alt+j focus down
-bindsym $alt+k focus up
-bindsym $alt+l focus right
+# Focus window
+bindsym --release $alt+h focus left
+bindsym --release $alt+j focus down
+bindsym --release $alt+k focus up
+bindsym --release $alt+l focus right
 
 # Move focused window
-bindsym $alt+Shift+h move left
-bindsym $alt+Shift+j move down
-bindsym $alt+Shift+k move up
-bindsym $alt+Shift+l move right
+bindsym --release $alt+Shift+h move left
+bindsym --release $alt+Shift+j move down
+bindsym --release $alt+Shift+k move up
+bindsym --release $alt+Shift+l move right
 
 # Split windows and toggle modes with intuitive keys
-bindsym $alt+b split h
-bindsym $alt+n split v
-bindsym $super+s layout toggle split
-bindsym $super+space floating toggle
-bindsym $super+Shift+space focus mode_toggle
+bindsym --release $alt+b split h
+bindsym --release $alt+n split v
+bindsym --release $super+s layout toggle split
+bindsym --release $super+space floating toggle
+bindsym --release $super+Shift+space focus mode_toggle
 
 # Fullscreen mode and workspace navigation
-bindsym $super+f fullscreen toggle
-bindsym $super+Tab workspace next
-bindsym $super+Shift+Tab workspace prev
+bindsym --release $super+f fullscreen toggle
+bindsym --release $super+Tab workspace next
+bindsym --release $super+Shift+Tab workspace prev
 
 # Assign workspace to monitor
 workspace 1:α output $monitor_primary
@@ -65,42 +65,42 @@ workspace 6:II output $monitor_left
 workspace 7:III output $monitor_left
 workspace 8:IV output $monitor_left
 
-# left screen
-bindsym $alt+u workspace 1:α
-bindsym $alt+i workspace 2:β
-bindsym $alt+o workspace 3:γ
-bindsym $alt+p workspace 4:δ
+# Left screen
+bindsym --release $alt+u workspace 1:α
+bindsym --release $alt+i workspace 2:β
+bindsym --release $alt+o workspace 3:γ
+bindsym --release $alt+p workspace 4:δ
 
-# right screen (main screen)
-bindsym $alt+a workspace 5:I
-bindsym $alt+z workspace 6:II
-bindsym $alt+e workspace 7:III
-bindsym $alt+r workspace 8:IV
+# Right screen (main screen)
+bindsym --release $alt+a workspace 5:I
+bindsym --release $alt+z workspace 6:II
+bindsym --release $alt+e workspace 7:III
+bindsym --release $alt+r workspace 8:IV
 
 # Move windows to workspaces
-bindsym $alt+Shift+u move container to workspace 1:α
-bindsym $alt+Shift+i move container to workspace 2:β
-bindsym $alt+Shift+o move container to workspace 3:γ
-bindsym $alt+Shift+p move container to workspace 4:δ
+bindsym --release $alt+Shift+u move container to workspace 1:α
+bindsym --release $alt+Shift+i move container to workspace 2:β
+bindsym --release $alt+Shift+o move container to workspace 3:γ
+bindsym --release $alt+Shift+p move container to workspace 4:δ
 
-bindsym $alt+Shift+a move container to workspace 5:I
-bindsym $alt+Shift+z move container to workspace 6:II
-bindsym $alt+Shift+e move container to workspace 7:III
-bindsym $alt+Shift+r move container to workspace 8:IV
+bindsym --release $alt+Shift+a move container to workspace 5:I
+bindsym --release $alt+Shift+z move container to workspace 6:II
+bindsym --release $alt+Shift+e move container to workspace 7:III
+bindsym --release $alt+Shift+r move container to workspace 8:IV
 
 # Restart and exit i3
-bindsym $super+BackSpace exec "i3-msg restart"
-bindsym $super+q exec "i3-nagbar -t warning -m 'Really exit?' -b 'Yes' 'i3-msg exit'"
+bindsym --release $super+BackSpace exec "i3-msg restart"
+bindsym --release $super+q exec "i3-nagbar -t warning -m 'Really exit?' -b 'Yes' 'i3-msg exit'"
 
 # Resize mode for fluid window management
 mode "resize" {
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+    bindsym --release h resize shrink width 10 px or 10 ppt
+    bindsym --release j resize grow height 10 px or 10 ppt
+    bindsym --release k resize shrink height 10 px or 10 ppt
+    bindsym --release l resize grow width 10 px or 10 ppt
     bindsym Return mode "default"
 }
-bindsym $super+r mode "resize"
+bindsym --release $super+r mode "resize"
 
 # Enhanced client colors for a modern look
 client.focused #3c3c3c #1c1c1c #c0c0c0 #3c3c3c #1c1c1c
@@ -110,11 +110,8 @@ client.urgent #ff0000 #1c1c1c #c0c0c0 #1c1c1c #1c1c1c
 client.placeholder #1c1c1c #1c1c1c #c0c0c0 #1c1c1c #1c1c1c
 client.background #1c1c1c
 
-# Floating and focused window rules for seamless experience
-for_window [class=Eog|Sxiv|feh|mpv|Vlc|FiSle-roller|Xarchiver] floating enable
-for_window [class=Eog|Sxiv|feh|mpv|Vlc|File-roller|Xarchiver] focus
+# Window borders
 for_window [class=".*"] border pixel 4
-hide_edge_borders smart
 gaps inner 5
 smart_gaps on
 
@@ -140,34 +137,30 @@ bar {
     }
 }
 
-
 # Wallpaper
 exec --no-startup-id feh --bg-scale ~/Pictures/ninja_synthwave.jpg
 
 # Screenshot
-bindsym $super+o exec --no-startup-id sh -c "maim --select | tee ~/Pictures/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png | xclip -selection clipboard -t image/png"
-bindsym $super+p exec --no-startup-id sh -c "maim | tee ~/Pictures/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png | xclip -selection clipboard -t image/png"
+bindsym --release $super+o exec --no-startup-id sh -c "maim --select | tee ~/Pictures/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png | xclip -selection clipboard -t image/png"
+bindsym --release $super+p exec --no-startup-id sh -c "maim | tee ~/Pictures/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png | xclip -selection clipboard -t image/png"
 
+# Additional screenshot shortcut
+bindsym --release $alt+s exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
-
-bindsym $alt+s exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
-##  Screen setup
+# Screen setup
 exec --no-startup-id xrandr --output DP-1 --mode 1920x1080 --rate 60 --pos 0x0 --output eDP-1 --primary --mode 1920x1200 --rate 60 --pos 1920x0
 
-## Screen animation with picom
+# Screen animation with picom
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
+# Lock screen + chrome + vscode
+bindsym --release $super+l exec i3lock -i ~/.lock.png
+bindsym --release $alt+w exec google-chrome
+bindsym --release $alt+c exec code
 
-# lock screen + chrome + vscode
-bindsym $super+l exec i3lock -i ~/.lock.png
-bindsym $alt+w exec google-chrome
-bindsym $alt+c exec code
-
-
-## Brightness control
+# Brightness control
 bindsym XF86MonBrightnessUp exec brightnessctl set 25+
-bindsym XF86MonBrightnessDown exec brightnessctl set 25- 
-
+bindsym XF86MonBrightnessDown exec brightnessctl set 25-
 
 ## Volume control
 
