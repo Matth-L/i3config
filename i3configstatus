@@ -11,13 +11,12 @@ order += "wireless wlp0s20f3"
 order += "volume master"
 order += "battery 0"
 order += "time"
-
 load {
-    format = "<span color='#006400'></span> %5min"
+    format = "<span color='#006400'>💻</span> %5min"
 }
 
 memory {
-    format = "<span color='#006400'>󰍛</span> %used/%total"
+    format = "<span color='#006400'>🧠</span> %used/%total"
 }
 
 battery 0 {
@@ -32,18 +31,19 @@ battery 0 {
 }
 
 wireless wlp0s20f3 {
-    format_up = "<span color='#00aaff'></span> %essid"
-    format_down = "<span color='#00aaff'></span> Disconnected"
+    format_up = "<span color='#00aaff'>📶</span> %essid"
+    format_down = "<span color='#00aaff'>❌</span> Disconnected"
 }
 
 volume master {
-    format = "<span color='#6666ff'></span> %volume"
-    format_muted = "<span color='#6666ff'></span> Muted"
+    format = "<span color='#6666ff'>🔊</span> %volume"
+    format_muted = "<span color='#6666ff'>🔇</span> Muted"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
 }
 
 time {
-    format = "<span color='#008080'></span> %b %d %H:%M"
+    format = "<span color='#008080'>🕒</span> %b %d %H:%M"
 }
+

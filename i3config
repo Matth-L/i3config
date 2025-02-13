@@ -102,9 +102,10 @@ mode "resize" {
 }
 bindsym --release $super+r mode "resize"
 
-# Enhanced client colors for a modern look
-client.focused #3c3c3c #1c1c1c #c0c0c0 #3c3c3c #1c1c1c
-client.focused_inactive #1c1c1c #3c3c3c #c0c0c0 #1c1c1c #1c1c1c
+# Enhanced client cBoth languages are languages that use LLVM to AOT compile to machine code, their standard libraries are both pretty well written, and both let you write code as fast/slow as you want.
+
+client.focused         #0f0f0f #ff00ff #00ff00 #00ffff #0f0f0f
+client.focused_inactive #0f0f0f #ff00ff #00ff00 #0f0f0f #0f0f0f
 client.unfocused #1c1c1c #3c3c3c #c0c0c0 #1c1c1c #1c1c1c
 client.urgent #ff0000 #1c1c1c #c0c0c0 #1c1c1c #1c1c1c
 client.placeholder #1c1c1c #1c1c1c #c0c0c0 #1c1c1c #1c1c1c
@@ -162,6 +163,9 @@ bindsym --release $alt+c exec code
 bindsym XF86MonBrightnessUp exec brightnessctl set 25+
 bindsym XF86MonBrightnessDown exec brightnessctl set 25-
 
+# Battery notification
+exec --no-startup-id ~/.config/i3/battery_notify.sh
+
 ## Volume control
 
 # Path to volume control, without trailing slash
@@ -190,3 +194,5 @@ set $volumestep 2.5
 bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig up $volumestep
 bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
 bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
+
+
