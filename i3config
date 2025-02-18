@@ -13,14 +13,14 @@ focus_follows_mouse yes
 force_focus_wrapping yes
 
 # Fonts
-font pango:Fira Code Regular 8
+font pango:Spleen 8x16 10 
 
 # Use mouse+$super for dragging floating windows
 floating_modifier $super
 
 # Dmenu launcher
 bindsym --release $alt+f exec i3-dmenu-desktop --dmenu="dmenu -i -b \
--fn 'Roboto Mono:size=9' -nb '#1c1c1c' -nf '#c0c0c0' \
+-fn 'Spleen 8x16:size=15' -nb '#1c1c1c' -nf '#c0c0c0' \
 -sb '#3c3c3c' -sf '#1c1c1c'"
 
 # Logout
@@ -122,7 +122,7 @@ bar {
     workspace_min_width 40
     padding 4px 8px 4px 8px
     strip_workspace_numbers yes
-    font pango:Fira Code 10
+    font pango:Spleen 8x16 10
     height 24
     tray_padding 4
 

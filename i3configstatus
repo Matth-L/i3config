@@ -12,7 +12,7 @@ order += "volume master"
 order += "battery 0"
 order += "time"
 load {
-    format = "<span color='#006400'>💻</span> %5min"
+    format = "<span color='#006400'>💻</span> %1min"
 }
 
 memory {
