@@ -46,4 +46,3 @@ volume master {
 time {
     format = "<span color='#008080'>🕒</span> %b %d %H:%M"
 }
-

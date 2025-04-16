@@ -6,7 +6,7 @@ set $alt Mod1
 bindsym --release $alt+Return exec gnome-terminal
 
 # Monitor
-set $monitor_left "DP-1"
+set $monitor_left "HDMI-1"
 set $monitor_primary "eDP-1"
 
 focus_follows_mouse yes
@@ -122,14 +122,14 @@ bar {
     workspace_min_width 40
     padding 4px 8px 4px 8px
     strip_workspace_numbers yes
-    font pango:Spleen 8x16 10
+    font pango:Spleen 8x16 12
     height 24
     tray_padding 4
 
     colors {
         background #2e2e2e
         statusline #ffffff
-        separator #4c4c4c
+        separator #5c4c4c
 
         focused_workspace #ffffff #3e3e3e #f0a500
         active_workspace #dcdcdc #3e3e3e #f0a500
@@ -139,7 +139,7 @@ bar {
 }
 
 # Wallpaper
-exec --no-startup-id feh --bg-scale ~/Pictures/ninja_synthwave.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/ninja_synthwave.jpg
 
 # Screenshot
 bindsym --release $super+o exec --no-startup-id sh -c "maim --select | tee ~/Pictures/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png | xclip -selection clipboard -t image/png"
@@ -149,14 +149,14 @@ bindsym --release $super+p exec --no-startup-id sh -c "maim | tee ~/Pictures/scr
 bindsym --release $alt+s exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # Screen setup
-exec --no-startup-id xrandr --output DP-1 --mode 1920x1080 --rate 60 --pos 0x0 --output eDP-1 --primary --mode 1920x1200 --rate 60 --pos 1920x0
+exec_always --no-startup-id xrandr --output HDMI-1 --auto --left-of eDP-1
 
 # Screen animation with picom
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
-# Lock screen + chrome + vscode
+# Lock screen + zen + vscode
 bindsym --release $super+l exec i3lock -i ~/.lock.png
-bindsym --release $alt+w exec google-chrome
+bindsym --release $alt+w exec flatpak run app.zen_browser.zen
 bindsym --release $alt+c exec code
 
 # Brightness control
@@ -194,5 +194,8 @@ set $volumestep 2.5
 bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig up $volumestep
 bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
 bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
+
+#keyboard
+exec --no-startup-id setxkbmap -layout fr -variant latin9
 
 
